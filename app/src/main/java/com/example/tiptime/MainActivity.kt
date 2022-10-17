@@ -20,7 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.costOfService.editText?.text = intent.getDoubleExtra("cost", 0.0).toString()
+        if (intent.getDoubleExtra("cost", 0.0)!= 0.0)
+        {
+            binding.costOfService.editText?.setText(intent.getDoubleExtra("cost", 0.0).toString())
+        }
         binding.calculateButton.setOnClickListener { calculateTip() }
 
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode)
