@@ -13,4 +13,5 @@
     <string name="total">Total Amount: %s</string>
     <string name="round_up">Added for the round up %s</string>
     <string name="asshole">%s</string>
+    <string name="toast">Add a cost to continue</string>
 </resources>

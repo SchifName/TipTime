@@ -47,6 +47,7 @@
             android:id="@+id/back_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="@string/back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

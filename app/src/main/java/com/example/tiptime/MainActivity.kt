@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         val stringInTextField = binding.costOfServiceEditText.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
         if (cost == null) {
-            Toast.makeText(applicationContext,"Inserisci un costo",Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext,R.string.toast,Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -63,15 +63,6 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("tip", tip)
         intent.putExtra("cost", cost)
         startActivity(intent)
-
-        /*val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
-        binding.total.text = getString(R.string.round_up, formattedTotal)
-
-        val formattedRoundUp = NumberFormat.getCurrencyInstance().format(roundUp)
-        binding.roundUp.text = getString(R.string.round_up, formattedRoundUp)
-
-        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
-        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)*/
     }
 
     private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
