@@ -1,6 +1,7 @@
 package com.example.tiptime
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
@@ -19,9 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.roundUp.text = ""
-        binding.tipResult.text =""
-        binding.total.text = ""
+        binding.costOfService.editText?.text = intent.getDoubleExtra("cost", 0.0).toString()
         binding.calculateButton.setOnClickListener { calculateTip() }
 
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode)
@@ -55,14 +54,21 @@ class MainActivity : AppCompatActivity() {
 
         roundUp = tip - roundUp
 
-        val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
+        val intent = Intent(this@MainActivity, SummaryPage::class.java)
+        intent.putExtra("total", total)
+        intent.putExtra("roundUp", roundUp)
+        intent.putExtra("tip", tip)
+        intent.putExtra("cost", cost)
+        startActivity(intent)
+
+        /*val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
         binding.total.text = getString(R.string.round_up, formattedTotal)
 
         val formattedRoundUp = NumberFormat.getCurrencyInstance().format(roundUp)
         binding.roundUp.text = getString(R.string.round_up, formattedRoundUp)
 
         val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
-        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
+        binding.tipResult.text = getString(R.string.tip_amount, formattedTip)*/
     }
 
     private fun handleKeyEvent(view: View, keyCode: Int): Boolean {

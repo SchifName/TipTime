@@ -125,34 +125,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
 
-        <TextView
-            android:id="@+id/total"
-            style="@style/Widget.TipTime.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/total"
-            app:layout_constraintBottom_toTopOf="@+id/tip_result"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calculate_button"
-            tools:text="Total Amount: $10" />
-
-        <TextView
-            android:id="@+id/tip_result"
-            style="@style/Widget.TipTime.TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tip_amount"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total"
-            tools:text="Tip Amount: $10" />
-
-        <TextView
-            android:id="@+id/roundUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/round_up"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tip_result" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
