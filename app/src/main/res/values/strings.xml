@@ -8,6 +8,7 @@
     <string name="bad_service">Bad (NO TIP)</string>
     <string name="round_up_tip">Round up tip?</string>
     <string name="calculate">Calculate</string>
+    <string name="back">Go Back</string>
     <string name="tip_amount">Tip Amount: %s</string>
     <string name="total">Total Amount: %s</string>
     <string name="round_up">Added for the round up %s</string>
