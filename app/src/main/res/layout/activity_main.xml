@@ -25,6 +25,7 @@
             android:id="@+id/cost_of_service"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:hint="@string/cost_of_service"
             app:layout_constraintStart_toEndOf="@+id/icon_cost_of_service"
             app:layout_constraintTop_toTopOf="parent">
@@ -54,17 +55,19 @@
             style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="@string/how_was_the_service"
-            app:layout_constraintStart_toEndOf="@+id/icon_service_question"
+            app:layout_constraintStart_toStartOf="@+id/cost_of_service"
             app:layout_constraintTop_toBottomOf="@id/cost_of_service" />
 
         <RadioGroup
             android:id="@+id/tip_options"
             android:layout_width="172dp"
             android:layout_height="186dp"
+            android:layout_marginTop="12dp"
             android:checkedButton="@id/option_twenty_percent"
             android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/service_question"
             app:layout_constraintTop_toBottomOf="@id/service_question">
 
             <RadioButton
@@ -109,18 +112,21 @@
             android:id="@+id/round_up_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:checked="true"
             android:minHeight="48dp"
             android:text="@string/round_up_tip"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/icon_round_up"
+            app:layout_constraintStart_toStartOf="@+id/tip_options"
             app:layout_constraintTop_toBottomOf="@id/tip_options" />
 
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:text="@string/calculate"
+            android:backgroundTint="@color/secondaryColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
