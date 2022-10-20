@@ -13,16 +13,24 @@
         tools:context=".SummaryPage">
 
         <TextView
-            android:id="@+id/total"
+            android:id="@+id/cost"
             style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/total"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/cost"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Total Amount: $10" />
+            tools:text="Cost of Service: $100" />
+
+        <TextView
+            android:id="@+id/percentage"
+            style="@style/Widget.TipTime.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/percentage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cost"
+            tools:text="Percentage of Tip: 20%" />
 
         <TextView
             android:id="@+id/tip_result"
@@ -31,19 +39,26 @@
             android:layout_height="wrap_content"
             android:text="@string/tip_amount"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total"
+            app:layout_constraintTop_toBottomOf="@+id/percentage"
             tools:text="Tip Amount: $10" />
 
         <TextView
             android:id="@+id/roundUp"
+            style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/round_up"
-            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tip_result" />
+            app:layout_constraintTop_toBottomOf="@id/tip_result" />
+
+        <TextView
+            android:id="@+id/total"
+            style="@style/Widget.TipTime.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/roundUp" />
 
         <Button
             android:id="@+id/back_button"
@@ -51,10 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/back"
-            android:backgroundTint="@color/secondaryColor"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/roundUp" />
+            app:layout_constraintTop_toBottomOf="@+id/total" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

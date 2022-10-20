@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tiptime.databinding.ActivityMainBinding
-import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,34 +19,36 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (intent.getDoubleExtra("cost", 0.0)!= 0.0)
-        {
+        if (intent.getDoubleExtra("cost", 0.0) != 0.0) {
             binding.costOfService.editText?.setText(intent.getDoubleExtra("cost", 0.0).toString())
         }
         binding.calculateButton.setOnClickListener { calculateTip() }
 
-        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ -> handleKeyEvent(view, keyCode)
+        binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
+            handleKeyEvent(view, keyCode)
         }
     }
 
     private fun calculateTip() {
         val stringInTextField = binding.costOfServiceEditText.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
+
+        //bad return, check inverse or do it in a function (best way is in a get of class)
         if (cost == null) {
-            Toast.makeText(applicationContext,R.string.toast,Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, R.string.toast, Toast.LENGTH_SHORT).show()
             return
         }
 
         var total = cost
 
         val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
-            R.id.option_twenty_percent -> 0.20
-            R.id.option_eighteen_percent -> 0.18
-            R.id.option_fifteen_percent -> 0.15
-            else -> 0.00
+            R.id.option_twenty_percent -> 20
+            R.id.option_eighteen_percent -> 18
+            R.id.option_fifteen_percent -> 15
+            else -> 0
         }
 
-        var tip = tipPercentage * cost
+        var tip = tipPercentage * (cost / 100)
         var roundUp = tip
         if (binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
@@ -62,6 +63,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("roundUp", roundUp)
         intent.putExtra("tip", tip)
         intent.putExtra("cost", cost)
+        intent.putExtra("percentage", tipPercentage)
         startActivity(intent)
     }
 
