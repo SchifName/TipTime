@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             tip = kotlin.math.ceil(tip)
         }
 
-        total = total + tip
+        total += tip
 
         roundUp = tip - roundUp
 
