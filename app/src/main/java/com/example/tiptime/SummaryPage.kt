@@ -23,12 +23,13 @@ class SummaryPage : AppCompatActivity() {
         binding.total.text = ""
 
         //recompile and reload for percentage too
+        val euro = intent.getDoubleExtra("euro", 0.0)
         val cost = intent.getDoubleExtra("cost", 0.0)
         text()
 
         binding.backButton.setOnClickListener {
             val intent = Intent(this@SummaryPage, MainActivity::class.java)
-            intent.putExtra("cost", cost)
+            intent.putExtra("euro", euro)
             startActivity(intent)
         }
     }

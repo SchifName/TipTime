@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (intent.getDoubleExtra("cost", 0.0) != 0.0) {
-            binding.costOfService.editText?.setText(intent.getDoubleExtra("cost", 0.0).toString())
+        if (intent.getDoubleExtra("euro", 0.0) != 0.0) {
+            binding.costOfService.editText?.setText(intent.getDoubleExtra("euro", 0.0).toString())
         }
 
         val spinner = binding.changeCurrencySpinner
