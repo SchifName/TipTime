@@ -15,7 +15,7 @@ class SummaryPage : AppCompatActivity() {
 
         binding = SummaryPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //init 2 new info
+        binding.euroCost.text = ""
         binding.cost.text = ""
         binding.percentage.text = ""
         binding.roundUp.text = ""
@@ -41,12 +41,19 @@ class SummaryPage : AppCompatActivity() {
         val cost = intent.getDoubleExtra("cost", 0.0)
         val percentage = intent.getIntExtra("percentage", 0)
         val currency = intent.getStringExtra("currency")
+        val euro = intent.getDoubleExtra("euro", 0.0)
 
         var symbol = when(currency){
             "Dollars" -> "$"
             "Pounds" -> "£"
             else -> "€"
         }
+
+        if(symbol != "€") {
+            val formattedEuro = String.format("${"€"}%.2f", euro)
+            binding.euroCost.text = getString(R.string.cost_euro, formattedEuro)
+        }
+
         //val formattedCost = NumberFormat.getCurrencyInstance().format(cost)
         val formattedCost = String.format("${symbol}%.2f", cost)
         binding.cost.text = getString(R.string.cost, formattedCost)

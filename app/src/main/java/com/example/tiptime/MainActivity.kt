@@ -33,19 +33,6 @@ class MainActivity : AppCompatActivity() {
                 android.R.layout.simple_spinner_item
             )
             spinner.adapter = adapter
-
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>,
-                    view: View, position: Int, id: Long
-                ) {
-
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>) {
-                }
-            }
         }
 
         binding.calculateButton.setOnClickListener {
@@ -61,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         val currency = binding.changeCurrencySpinner.selectedItem.toString()
         val stringInTextField = binding.costOfServiceEditText.text.toString()
         var cost = stringInTextField.toDoubleOrNull()
+        val euro = cost
 
         //bad return, check inverse or do it in a function (best way is in a get of class)
         if (cost == null) {
@@ -69,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         var total = when (currency){
-            "Dollars" -> cost * 0.9834
-            "Pounds" -> cost * 0.8684
+            "Dollars" -> cost * 0.9814
+            "Pounds" -> cost * 0.8675
             else -> cost
         }
 
@@ -99,6 +87,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("tip", tip)
         intent.putExtra("currency", currency)
         intent.putExtra("cost", cost)
+        intent.putExtra("euro", euro)
         intent.putExtra("percentage", tipPercentage)
         startActivity(intent)
     }

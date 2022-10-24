@@ -13,13 +13,23 @@
         tools:context=".SummaryPage">
 
         <TextView
+            android:id="@+id/euro_cost"
+            style="@style/Widget.TipTime.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cost_euro"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Cost of Service in Euro: €100" />
+
+        <TextView
             android:id="@+id/cost"
             style="@style/Widget.TipTime.TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cost"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/euro_cost"
             tools:text="Cost of Service: $100" />
 
         <TextView

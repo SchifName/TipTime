@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Tip Time</string>
-    <string name="cost_of_service">Cost of Service</string>
+    <string name="cost_of_service">Cost of Service €</string>
     <string name="how_was_the_service">How was the service?</string>
     <string name="amazing_service">Amazing (20%)</string>
     <string name="good_service">Good (18%)</string>
@@ -18,6 +18,7 @@
 
 
     <string name="cost">Cost of Service: %s</string>
+    <string name="cost_euro">Cost of Service in Euro: %s</string>
     <string name="percentage">Percentage of tip: %s </string>
     <string name="tip_amount">Tip Amount: %s</string>
     <string name="round_up">Added for the round up %s</string>
