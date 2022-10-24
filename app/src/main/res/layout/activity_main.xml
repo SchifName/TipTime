@@ -112,23 +112,53 @@
             android:id="@+id/round_up_switch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:checked="true"
             android:minHeight="48dp"
             android:text="@string/round_up_tip"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tip_options"
-            app:layout_constraintTop_toBottomOf="@id/tip_options" />
+            app:layout_constraintTop_toBottomOf="@+id/currency_question" />
+
+        <TextView
+            android:id="@+id/currency_question"
+            style="@style/Widget.TipTime.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/currency"
+            app:layout_constraintStart_toStartOf="@+id/round_up_switch"
+            app:layout_constraintTop_toBottomOf="@+id/tip_options" />
+
+        <ImageView
+            android:id="@+id/Currency_exchange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/currency_question"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/currency_question"
+            app:srcCompat="@drawable/ic_baseline_currency_exchange_24" />
+
+        <Spinner
+            android:id="@+id/change_currency_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tip_options"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/calculate_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:text="@string/calculate"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/round_up_switch" />
+            app:layout_constraintTop_toBottomOf="@+id/round_up_switch" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tiptime.databinding.ActivityMainBinding
@@ -22,7 +24,33 @@ class MainActivity : AppCompatActivity() {
         if (intent.getDoubleExtra("cost", 0.0) != 0.0) {
             binding.costOfService.editText?.setText(intent.getDoubleExtra("cost", 0.0).toString())
         }
-        binding.calculateButton.setOnClickListener { calculateTip() }
+
+        val spinner = binding.changeCurrencySpinner
+        if (spinner != null) {
+            val adapter = ArrayAdapter.createFromResource(
+                this,
+                R.array.currency_list,
+                android.R.layout.simple_spinner_item
+            )
+            spinner.adapter = adapter
+
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>,
+                    view: View, position: Int, id: Long
+                ) {
+
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>) {
+                }
+            }
+        }
+
+        binding.calculateButton.setOnClickListener {
+            calculateTip()
+        }
 
         binding.costOfServiceEditText.setOnKeyListener { view, keyCode, _ ->
             handleKeyEvent(view, keyCode)
@@ -30,8 +58,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun calculateTip() {
+        val currency = binding.changeCurrencySpinner.selectedItem.toString()
         val stringInTextField = binding.costOfServiceEditText.text.toString()
-        val cost = stringInTextField.toDoubleOrNull()
+        var cost = stringInTextField.toDoubleOrNull()
 
         //bad return, check inverse or do it in a function (best way is in a get of class)
         if (cost == null) {
@@ -39,7 +68,13 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        var total = cost
+        var total = when (currency){
+            "Dollars" -> cost * 0.9834
+            "Pounds" -> cost * 0.8684
+            else -> cost
+        }
+
+        cost = total
 
         val tipPercentage = when (binding.tipOptions.checkedRadioButtonId) {
             R.id.option_twenty_percent -> 20
@@ -62,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         intent.putExtra("total", total)
         intent.putExtra("roundUp", roundUp)
         intent.putExtra("tip", tip)
+        intent.putExtra("currency", currency)
         intent.putExtra("cost", cost)
         intent.putExtra("percentage", tipPercentage)
         startActivity(intent)

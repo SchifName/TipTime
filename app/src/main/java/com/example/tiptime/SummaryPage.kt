@@ -35,27 +35,30 @@ class SummaryPage : AppCompatActivity() {
 
     //made it private
     private fun text() {
-        //variable switched from var to val
         val total = intent.getDoubleExtra("total", 0.0)
         val roundUp = intent.getDoubleExtra("roundUp", 0.0)
         val tip = intent.getDoubleExtra("tip", 0.0)
-
-        //declaring more info
         val cost = intent.getDoubleExtra("cost", 0.0)
         val percentage = intent.getIntExtra("percentage", 0)
+        val currency = intent.getStringExtra("currency")
 
-        //adding 2 new info
-        val formattedCost = NumberFormat.getCurrencyInstance().format(cost)
+        var symbol = when(currency){
+            "Dollars" -> "$"
+            "Pounds" -> "£"
+            else -> "€"
+        }
+        //val formattedCost = NumberFormat.getCurrencyInstance().format(cost)
+        val formattedCost = String.format("${symbol}%.2f", cost)
         binding.cost.text = getString(R.string.cost, formattedCost)
         binding.percentage.text = getString(R.string.percentage, "$percentage%")
 
-        val formattedTip = NumberFormat.getCurrencyInstance().format(tip)
+        val formattedTip = String.format("${symbol}%.2f", tip)  // NumberFormat.getCurrencyInstance().format(tip)
         binding.tipResult.text = getString(R.string.tip_amount, formattedTip)
 
-        val formattedRoundUp = NumberFormat.getCurrencyInstance().format(roundUp)
+        val formattedRoundUp = String.format("${symbol}%.2f", roundUp)  //NumberFormat.getCurrencyInstance().format(roundUp)
         binding.roundUp.text = getString(R.string.round_up, formattedRoundUp)
 
-        val formattedTotal = NumberFormat.getCurrencyInstance().format(total)
+        val formattedTotal = String.format("${symbol}%.2f", total) //NumberFormat.getCurrencyInstance().format(total)
         binding.total.text = getString(R.string.total, formattedTotal)
     }
 }

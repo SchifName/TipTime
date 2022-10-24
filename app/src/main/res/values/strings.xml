@@ -8,6 +8,13 @@
     <string name="bad_service">Bad (NO TIP)</string>
     <string name="round_up_tip">Round up tip?</string>
     <string name="calculate">Calculate</string>
+    <string name="currency">Currency exchange</string>
+
+    <string-array name="currency_list">
+        <item>Euro</item>
+        <item>Dollars</item>
+        <item>Pounds</item>
+    </string-array>
 
 
     <string name="cost">Cost of Service: %s</string>
